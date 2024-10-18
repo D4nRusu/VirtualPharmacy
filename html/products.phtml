@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php
+$title = 'Products';
+require "headers/head.phtml";
+?>
+<body>
+<?php
+
+if ($user->isLoggedIn()) {
+    require 'headers/navbar_logged_in.html';
+} else {
+    require 'headers/navbar_home.html';
+}
+
+?>
+
+<h1 style="text-align:center; margin-top:50px">Product id: <?= $_GET['prodId'] ?></h1>
+<div class="container">
+    <?php
+    while ($row = $result->fetch_assoc()) {
+        ?>
+        <b>Label: </b><?= $row['label'] ?> <br>
+        <b>URL: </b><?= $row['url'] ?> <br>
+        <b>Description: </b><br>
+        <hr class="mx-auto"><?= $row['description'] ?>
+        <hr class="mx-auto">
+        <b>Last updated: </b><?= $row['date_updated'] ?><br><br>
+        <?php
+    }
+    ?>
+</div>
+
+</body>
+</html>

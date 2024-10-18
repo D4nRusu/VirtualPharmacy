@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php
+
+$title = 'Account information';
+require "headers/head.phtml";
+?>
+<body>
+<?php
+require 'headers/navbar_accountinfo.html';
+?>
+
+<!-- Account details -->
+<div class="container">
+    <div class="row welcome-row">
+        <h2 style=""> Your account: </h2>
+
+        <div class="col-md-6 mb-3">
+            <span> <b>Username:</b> <?= $_SESSION['user'] ?></span><br>
+            <span> <b>Email:</b> <?= $_SESSION['userEmail'] ?></span><br>
+            <span> <b>Registration date:</b> <?= $_SESSION['userRegDate'] ?></span>
+        </div>
+        <div class="col-md-6 mb-3">
+            <span> <b>First name:</b> <?= $_SESSION['userFirstName'] ?></span><br>
+            <span> <b>Last name:</b> <?= $_SESSION['userLastName'] ?></span><br>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

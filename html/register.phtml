@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php
+$title = 'Register';
+require "headers/head.phtml";
+?>
+<body>
+<?php
+require "headers/navbar_register.html";
+?>
+
+<!-- Registration form -->
+<!-- If there are any errors, they will be displayed underneath the input field that got the error -->
+<!-- In case something goes wrong, inputs from all fields aside from password will be kept so that
+ the user doesnt have to type them again -->
+<div class="container-fluid form-container">
+
+    <form method="post" action="../register.php" id="register_form">
+        <h1 class="form-header"> REGISTER: </h1>
+        <hr class="mx-auto">
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" id="email" value="<?php
+            if (isset($_POST['email'])) {
+                echo $_POST['email'];
+            } ?>" required>
+            <?php
+            if (isset($_SESSION['emailError'])) {
+                echo '<small id="usernameHelp" class="form-text error-msg">' . $_SESSION['emailError'] . '</small>';
+                unset($_SESSION['emailError']);
+            }
+            ?>
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" id="username" value="<?php
+            if (isset($_POST['username'])) {
+                echo $_POST['username'];
+            } ?>" required>
+            <small id="usernameHelp" class="form-text text-muted">Must be 4-18 characters long, can include a-z, A-Z and
+                0-9.</small><br>
+            <?php
+            if (isset($_SESSION['usernameError'])) {
+                echo '<small id="usernameHelp" class="form-text error-msg">' . $_SESSION['usernameError'] . '</small>';
+                unset($_SESSION['usernameError']);
+            }
+            ?>
+        </div>
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First name</label>
+            <input type="text" class="form-control" name="firstName" id="firstName" value="<?php
+            if (isset($_POST['firstName'])) {
+                echo $_POST['firstName'];
+            } ?>" required>
+            <?php
+            if (isset($_SESSION['firstNameError'])) {
+                echo '<small id="usernameHelp" class="form-text error-msg">' . $_SESSION['firstNameError'] . '</small>';
+                unset($_SESSION['firstNameError']);
+            }
+            ?>
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last name</label>
+            <input type="text" class="form-control" name="lastName" id="lastName" value="<?php
+            if (isset($_POST['lastName'])) {
+                echo $_POST['lastName'];
+            } ?>" required>
+
+            <?php
+            if (isset($_SESSION['lastNameError'])) {
+                echo '<small id="usernameHelp" class="form-text error-msg">' . $_SESSION['lastNameError'] . '</small>';
+                unset($_SESSION['lastNameError']);
+            }
+            ?>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" id="password" required>
+        </div>
+
+        <hr class="mx-auto">
+        <button type="submit" class="btn btn-dark" name="submit" id="submit">Submit</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

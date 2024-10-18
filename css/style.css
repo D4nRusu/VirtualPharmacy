@@ -1,0 +1,120 @@
+.form-header{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-container{
+    margin-top: 100px;
+    width:25%;
+}
+
+.btn-dark{
+    width:100%!important;
+    background-color: #bfbfbf!important;
+    color: black;
+}
+
+.btn-dark:hover{
+    background-color: #595959!important;
+}
+
+.error-msg{
+    color: red;
+}
+
+.error-msg.login{
+    text-align: center;
+    margin-top:15px;
+}
+
+.register-successful{
+    color: green;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.welcome-msg{
+    text-align:center;
+    margin-top:15px;
+    margin-bottom: 15px;
+}
+
+.welcome-container{
+    width:100%;
+}
+
+.welcome-row{
+    background-color: #e0e0e0;
+}
+
+.accinfo-container{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.page-navigator{
+    width: 100%;
+    background-color: #f5f5f5;
+}
+
+.btn-light:hover{
+    background-color: #b5b5b5!important;
+}
+
+.btn-info{
+    margin-right:20px;
+    margin-left:20px;
+
+}
+
+.custom {
+    width: 60px !important;
+}
+
+.nav-btn{
+    width: 80px !important;
+}
+
+.col-custom{
+    text-align: center;
+}
+
+.product-label{
+    padding: 5px;
+    text-decoration: none;
+}
+
+.product-label:hover{
+    padding: 5px;
+    text-decoration: none;
+    color: red;
+}
+
+.product-label.favorite{
+    color: red;
+}
+
+.product-label.favorite:hover{
+    color: blue;
+}
+
+label{
+    cursor:pointer;
+}
+
+.heart-checkbox{
+    display: none;
+}
+
+.checker {
+    background-image: url(../img/hearts.png);
+    width: 25px;
+    height: 25px;
+    background-position: left center;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+}
+.heart-checkbox:checked + .checker {
+    background-position: right center;
+}
+

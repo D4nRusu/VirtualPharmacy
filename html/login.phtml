@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php
+$title = 'Login';
+require "headers/head.phtml";
+?>
+<body>
+<?php
+require "headers/navbar_login.html";
+?>
+
+<?php
+// If the user just registered and gets redirected to this login page, they receive this message
+if (isset($_SESSION['Register'])) {
+    if ($_SESSION['Register'] === true) {
+        echo "<h2 class='register-successful'> Successfully registered, you can now login below</h2>";
+        unset($_SESSION['Register']);
+    }
+}
+// In case there's an error, it displays it
+if (isset($_SESSION['LoginError'])) {
+    echo "<h2 class='error-msg login'>" . $_SESSION['LoginError'] . "</h2>";
+    unset($_SESSION['LoginError']);
+}
+
+?>
+
+<!-- Login form -->
+<div class="container-fluid form-container">
+
+    <form method="post" action="../login.php" id="login_form">
+        <h1 class="form-header"> LOGIN: </h1>
+        <hr class="mx-auto">
+
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" id="username"
+                   value="<?php
+                   if (isset($_POST['submit'])) {
+                       echo $_POST['username'];
+                   } ?>" required>
+
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" id="password" required>
+        </div>
+
+        <hr class="mx-auto">
+        <button type="submit" class="btn btn-dark" name="submit" id="submit">Submit</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

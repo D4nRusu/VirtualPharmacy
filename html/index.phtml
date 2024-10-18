@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php
+$title = 'Home';
+require "headers/head.phtml";
+?>
+
+<body>
+<?php
+
+if ($user->isLoggedIn()) {
+    require 'headers/navbar_logged_in.html';
+} else {
+    require 'headers/navbar_home.html';
+}
+
+?>
+
+
+<div class="container-fluid welcome-container">
+    <div class="row welcome-row">
+        <?php
+
+        // Display custom welcome message on home page, depending on whether the user is logged in or not
+        echo "<h1 class='welcome-msg'> Welcome to DEVshop, ";
+        if (isset($_SESSION['isLoggedIn'])) {
+            if ($_SESSION['isLoggedIn'] === true) {
+                echo $_SESSION['user'];
+            } else {
+                echo "stranger" . "! Login to begin shopping";
+            }
+        } else {
+            echo "stranger" . "! Login to begin shopping";
+        }
+        echo "!</h1>";
+        ?>
+
+    </div>
+</div>
+
+<?php
+$prod->displayPageNavigation();
+?>
+
+<h5 style="text-align: center; margin-top:15px">Click on a product for more details, or click on the heart icon to add
+    to favorites</h5>
+<div class="container">
+    <form method="post" action="../index.php" id="form">
+        <div class="row mt-4">
+
+            <?php
+            $products = $prod->getProductsOnPage();
+            $i = 0;
+            foreach ($products
+
+            as $row){
+            if ($i % 2 == 0 && $i != 0) {
+            ?>
+        </div>
+        <div class="row mt-4">
+            <?php
+            }
+            ?>
+            <div class="col-md-6">
+
+                <input class="heart-checkbox" type="checkbox" name="<?= $row['id'] ?>" id="<?= $row['id'] ?>"
+                       value="<?= $row['id'] ?>"
+                    <?php
+                    if (isset($_SESSION['userId'])) {
+                        if ($prod->isFavorite($_SESSION['userId'], $row['id'])) { ?>
+                            checked <?php
+                        }
+                    } ?>
+                />
+                <label class="checker" for="<?= $row['id'] ?>"></label>
+
+                <a class="product-label
+                <?php
+                if (isset($_SESSION['userId'])) {
+                    if ($prod->isFavorite($_SESSION['userId'], $row['id'])) { ?> favorite <?php
+                    }
+                } ?>"
+                   href="../products.php?prodId=<?= $row['id'] ?>"> <?= $row['label'] ?>
+
+                </a>
+            </div>
+            <?php
+            ++$i;
+            }
+            ?>
+        </div>
+    </form>
+</div>
+<br><br>
+
+<script src="../js/goToPage.js"></script>
+<!-- Script to make it easier to access each page by simply putting in the number -->
+<script src="../js/addToFavorites.js"></script> <!-- Script that sends the product id and checked status to the server
+                                                        when its heart icon is pressed -->
+
+</body>
+</html>
