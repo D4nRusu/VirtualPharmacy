@@ -1,4 +1,4 @@
-Web application
+OOP Web Application
 ===
 Made by Rusu Dan
 ---
