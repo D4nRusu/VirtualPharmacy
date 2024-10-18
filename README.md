@@ -1,6 +1,6 @@
 OOP Web Application
 ===
-Made by Rusu Dan
+Made by Dan Rusu
 ---
 
 Features:
