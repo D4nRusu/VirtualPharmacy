@@ -7,6 +7,8 @@ Features:
 =========
 - Front-end built with Bootstrap
 
+- Exhaustive MySQL database
+
 - Account registration with proper field validation
   
 - 1200+ products stored in a database and displayed over 26 pages
